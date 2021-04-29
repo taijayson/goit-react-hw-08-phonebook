@@ -1,0 +1,27 @@
+.welcome {
+  text-align: center;
+
+  color: rgba(43, 29, 245, 0.8);
+  text-shadow: 0 0 10px rgba(43, 29, 245, 0.3);
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.button {
+  width: 80px;
+  height: 20px;
+  display: inline-block;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.button:hover,
+.buttonfocus {
+  background-color: rgba(43, 29, 245, 0.8);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(43, 29, 245, 0.8);
+}

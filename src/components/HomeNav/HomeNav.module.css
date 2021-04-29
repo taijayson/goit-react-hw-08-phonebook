@@ -1,0 +1,11 @@
+.title {
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(59, 69, 69, 0.8);
+  text-shadow: 0 0 10px rgba(43, 29, 245, 0.3);
+}
+
+.title:not(:last-child) {
+  margin-right: 10px;
+}
