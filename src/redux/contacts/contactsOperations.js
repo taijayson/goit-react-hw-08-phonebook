@@ -28,11 +28,11 @@ const addContact = (contact) => (dispatch) => {
     .catch((err) => dispatch(addContactError(err.message)));
 };
 
-const deleteContact = (contactId) => (dispatch) => {
+const deleteContact = (id) => (dispatch) => {
   dispatch(deleteContactRequest());
   return axios
-    .delete(`/contacts/${contactId}`)
-    .then(() => dispatch(deleteContactSuccess(contactId)))
+    .delete(`/contacts/${id}`)
+    .then(() => dispatch(deleteContactSuccess(id)))
     .catch((err) => dispatch(deleteContactError(err.message)));
 };
 

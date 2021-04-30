@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./ContactList.module.css";
 import contactOperations from "../../redux/contacts/contactsOperations";
 import {
@@ -8,54 +8,40 @@ import {
   getFilteredContacts,
 } from "../../redux/contacts/contactsSelectors";
 
-class ContactList extends Component {
-  state = {};
-
-  componentDidMount() {
-    this.props.getContacts();
-  }
-
-  render() {
-    return (
-      <>
-        {this.props.loading && <h1>...</h1>}
-        <ul className={styles.list}>
-          {this.props.contacts.length > 0 &&
-            this.props.contacts.map(({ id, name, number }) => (
-              <li key={id} className={styles.item}>
-                {name}: {number}
-                <button
-                  className={styles.delete_btn}
-                  onClick={() => this.props.onRemoveContact(id)}
-                >
-                  del
-                </button>
-              </li>
-            ))}
-        </ul>
-      </>
-    );
-  }
+export default function ContactList() {
+  const dispatch = useDispatch();
+  const contacts = useSelector(getFilteredContacts);
+  const loading = useSelector(getLoading);
+  const onRemoveContact = (event) => {
+    dispatch(contactOperations.deleteContact(event.target.id));
+  };
+  useEffect(() => {
+    if (!contacts.length) {
+      dispatch(contactOperations.uploadContacts());
+    }
+  }, [dispatch, contacts.length]);
+  return (
+    <>
+      {loading && <h1>...</h1>}
+      <ul className={styles.list}>
+        {contacts.length > 0 &&
+          contacts.map(({ id, name, number }) => (
+            <li key={id} className={styles.item}>
+              {name}: {number}
+              <button
+                className={styles.delete_btn}
+                onClick={(event) => onRemoveContact(id)}
+              >
+                del
+              </button>
+            </li>
+          ))}
+      </ul>
+    </>
+  );
 }
 
-const mapStateToProps = (state) => ({
-  contacts: getFilteredContacts(state),
-  loading: getLoading(state),
-  //   contacts.filter((contact) =>
-  // contact.name.toLowerCase().includes(filter.toLowerCase())
-  // ),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onRemoveContact: (contactId) =>
-    dispatch(contactOperations.deleteContact(contactId)),
-  getContacts: () => dispatch(contactOperations.uploadContacts()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
-
 ContactList.propTypes = {
-  onRemoveContact: PropTypes.func.isRequired,
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -64,26 +50,27 @@ ContactList.propTypes = {
     })
   ),
 };
-// import contactActions from "../../redux/contacts/contactsActions";
+// class ContactList extends Component {
+//   state = {};
 
-// const ContactList = ({ contacts, onRemoveContact, uploadContacts }) => {
-//   console.log(contacts);
+//   componentDidMount() {
+//     this.props.getContacts();
+//   }
 
-//   return (
-//     <ul className={styles.list}>
-//       {contacts.map(({ name, id, number }) => {
-//         return (
-//           <li className={styles.item} key={id}>
-//             {name + " : " + number}
-//             <button
-//               className={styles.delete_btn}
-//               onClick={() => onRemoveContact(id)}
-//             >
-//               Delete
-//             </button>
-//           </li>
-//         );
-//       })}
-//     </ul>
-//   );
-// };
+// render() {
+//
+// const mapStateToProps = (state) => ({
+//   contacts: getFilteredContacts(state),
+//   loading: getLoading(state),
+//   //   contacts.filter((contact) =>
+//   // contact.name.toLowerCase().includes(filter.toLowerCase())
+//   // ),
+// });
+
+// const mapDispatchToProps = (dispatch) => ({
+//   onRemoveContact: (contactId) =>
+//   dispatch(contactOperations.deleteContact(contactId)),
+//   getContacts: () => dispatch(contactOperations.uploadContacts()),
+// });
+
+// export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

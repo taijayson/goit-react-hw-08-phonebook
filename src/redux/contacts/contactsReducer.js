@@ -16,7 +16,7 @@ import {
 } from "./contactsActions";
 
 const contacts = createReducer([], {
-  [loadContactsSuccess]: (state, { payload }) => payload,
+  [loadContactsSuccess]: (_, { payload }) => payload,
   [addContactSuccess]: (state, { payload }) => [...state, payload],
   [deleteContactSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
@@ -35,13 +35,20 @@ const loading = createReducer(false, {
 });
 
 const filter = createReducer("", {
-  [filterContact]: (state, { payload }) => payload,
+  [filterContact]: (_, { payload }) => payload,
+});
+
+const error = createReducer(null, {
+  [loadContactsError]: (_, { payload }) => payload,
+  [addContactError]: (_, { payload }) => payload,
+  [deleteContactError]: (_, { payload }) => payload,
 });
 
 const contactsReducer = combineReducers({
   contacts,
   loading,
   filter,
+  error,
 });
 
 export default contactsReducer;
