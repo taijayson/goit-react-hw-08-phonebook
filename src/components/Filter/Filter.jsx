@@ -30,7 +30,7 @@ export default function Filter() {
 
 Filter.propTypes = {
   filter: PropTypes.string,
-  filterContact: PropTypes.func.isRequired,
+  filterContact: PropTypes.func,
 };
 
 // const mapStateToProps = (state) => {

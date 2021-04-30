@@ -113,7 +113,7 @@ export default function ContactForm() {
 }
 
 ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func,
 };
 
 // const mapStateToProps = (state) => {

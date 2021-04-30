@@ -12,8 +12,9 @@ export default function ContactList() {
   const dispatch = useDispatch();
   const contacts = useSelector(getFilteredContacts);
   const loading = useSelector(getLoading);
-  const onRemoveContact = (event) => {
-    dispatch(contactOperations.deleteContact(event.target.id));
+  const onRemoveContact = (id) => {
+    // console.log(event.target.id);
+    dispatch(contactOperations.deleteContact(id));
   };
   useEffect(() => {
     if (!contacts.length) {
@@ -30,7 +31,9 @@ export default function ContactList() {
               {name}: {number}
               <button
                 className={styles.delete_btn}
-                onClick={(event) => onRemoveContact(id)}
+                onClick={() => {
+                  onRemoveContact(id);
+                }}
               >
                 del
               </button>
