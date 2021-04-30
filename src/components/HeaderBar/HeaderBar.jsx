@@ -7,11 +7,11 @@ import styles from "./HeaderBar.module.css";
 
 const HeaderBar = () => {
   // const isAuth = useSelector((state) => state.auth.token);
-  const authorise = useSelector(isAuth);
+  const authorised = useSelector(isAuth);
   return (
     <header className={styles.header}>
       <HomeNav />
-      {authorise ? <UserMenu /> : <AuthNav />}
+      {authorised ? <UserMenu /> : <AuthNav />}
     </header>
   );
 };

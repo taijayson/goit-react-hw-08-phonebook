@@ -1,66 +1,52 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { logIn } from "../redux/auth/authOperations";
-import styles from "./MainPage.module.css";
+import LoginForm from "../components/ContactForm/LoginForm";
+// import styles from "./MainPage.module.css";
 
-class LoginPage extends Component {
-  state = {
-    email: "",
-    password: "",
-  };
+// class LoginPage extends Component {
+//   state = {
+//     email: "",
+//     password: "",
+//   };
 
-  handleChange = (event) => {
-    const { name, value } = event.currentTarget;
-    this.setState({ [name]: value });
-  };
+//   handleChange = (event) => {
+//     const { name, value } = event.currentTarget;
+//     this.setState({ [name]: value });
+//   };
 
-  handleSubmit = (event) => {
+export default function LoginPage() {
+  const dispatch = useDispatch();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const addEmail = (event) => setEmail(event.target.value);
+  const addPassword = (event) => setPassword(event.target.value);
+
+  const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(logIn({ email, password }));
+    setEmail("");
+    setPassword("");
 
-    this.props.onLogin(this.state);
-    this.setState({ name: "", email: "", password: "" });
+    // this.props.onLogin(this.state);
+    // this.setState({ name: "", email: "", password: "" });
   };
 
-  render() {
-    const { email, password } = this.state;
-    console.log(this.state);
-    return (
-      <div className={styles.wrap}>
-        <h1>Login</h1>
-        <form
-          onSubmit={this.handleSubmit}
-          autoComplete="off"
-          className={styles.form}
-        >
-          <label className={styles.label}>
-            Email
-            <input
-              className={styles.input}
-              type="email"
-              name="email"
-              value={email}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label className={styles.label}>
-            Password
-            <input
-              className={styles.input}
-              type="password"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-            />
-          </label>
-          <button type="submit" className={styles.button}>
-            Go
-          </button>
-        </form>
-      </div>
-    );
-  }
+  // const { email, password } = this.state;
+  // console.log(this.state);
+  return (
+    <LoginForm
+      email={email}
+      password={password}
+      addEmail={addEmail}
+      addPassword={addPassword}
+      handleSubmit={handleSubmit}
+    />
+  );
 }
 
-const mapDispatchToProps = { onLogin: logIn };
+// const mapDispatchToProps = { onLogin: logIn };
 
-export default connect(null, mapDispatchToProps)(LoginPage);
+// export default connect(null, mapDispatchToProps)(LoginPage);
