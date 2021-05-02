@@ -11,12 +11,12 @@ import {
   getCurrentUserError,
 } from "./authActions";
 
-const initialUserState = { name: null, email: null };
+const initialState = { name: null, email: null };
 
-const user = createReducer(initialUserState, {
+const user = createReducer(initialState, {
   [registerSuccess]: (_, { payload }) => payload.user,
   [loginSuccess]: (_, { payload }) => payload.user,
-  [logoutSuccess]: () => initialUserState,
+  [logoutSuccess]: () => initialState,
   [getCurrentUserSuccess]: (_, { payload }) => payload,
 });
 

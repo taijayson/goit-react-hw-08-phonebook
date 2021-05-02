@@ -13,7 +13,6 @@ export default function ContactList() {
   const contacts = useSelector(getFilteredContacts);
   const loading = useSelector(getLoading);
   const onRemoveContact = (id) => {
-    // console.log(event.target.id);
     dispatch(contactOperations.deleteContact(id));
   };
   useEffect(() => {
@@ -53,27 +52,3 @@ ContactList.propTypes = {
     })
   ),
 };
-// class ContactList extends Component {
-//   state = {};
-
-//   componentDidMount() {
-//     this.props.getContacts();
-//   }
-
-// render() {
-//
-// const mapStateToProps = (state) => ({
-//   contacts: getFilteredContacts(state),
-//   loading: getLoading(state),
-//   //   contacts.filter((contact) =>
-//   // contact.name.toLowerCase().includes(filter.toLowerCase())
-//   // ),
-// });
-
-// const mapDispatchToProps = (dispatch) => ({
-//   onRemoveContact: (contactId) =>
-//   dispatch(contactOperations.deleteContact(contactId)),
-//   getContacts: () => dispatch(contactOperations.uploadContacts()),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

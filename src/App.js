@@ -15,10 +15,6 @@ const HomePage = lazy(() => import("./pages/HomePage"));
 const LoginPage = lazy(() => import("./pages/LoginPage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage"));
 
-// class App extends Component {
-//   componentDidMount() {
-//     this.props.getCurrentUser();
-
 export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -51,30 +47,3 @@ export default function App() {
     </div>
   );
 }
-
-// const mapDispatchToProps = { getCurrentUser: getCurrentUser };
-
-// export default connect(null, mapDispatchToProps)(App);
-
-// import React from "react";
-// import ContactForm from "./components/ContactForm/ContactForm";
-// import Filter from "./components/Filter/Filter";
-// import ContactList from "./components/ContactList/ContactList";
-// import { v4 as uuidv4 } from "uuid";
-// export const App = () => {
-//   return (
-//     <div className="wrap">
-//       <div className="section">
-//         <h1 className="title">Phonebook</h1>
-//         <ContactForm />
-//       </div>
-//       <div className="section">
-//         <h2 className="title">Contacts</h2>
-//         <Filter />
-//         <ContactList />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default App;

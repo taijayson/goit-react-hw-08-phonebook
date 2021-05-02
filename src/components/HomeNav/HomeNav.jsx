@@ -5,7 +5,6 @@ import { isAuth } from "../../redux/auth/authSelectors";
 import styles from "./HomeNav.module.css";
 
 const HomeNav = () => {
-  //   const isAuth = useSelector((state) => state.auth.token);
   const authorise = useSelector(isAuth);
   return (
     <div className={styles.wrap}>

@@ -4,31 +4,6 @@ import PropTypes from "prop-types";
 import styles from "./ContactForm.module.css";
 import contactOperations from "../../redux/contacts/contactsOperations";
 import { getAllContacts } from "../../redux/contacts/contactsSelectors";
-// import { v4 as uuidv4 } from "uuid";
-// import contactActions from "../../redux/contacts/contactsActions";
-// import comboDispatchFunc from "../../redux/contacts/contactsActions";
-
-// class ContactForm extends Component {
-//   state = {
-//     name: "",
-//     number: "",
-//   };
-
-// componentDidMount() {
-//   try {
-//     const contacts = JSON.parse(localStorage.getItem("contacts"));
-//     if (contacts) {
-//       this.props.dbUploadContacts(contacts);
-//     }
-//   } catch (error) {}
-// }
-
-// componentDidUpdate(prevProps, prevState) {
-//   if (this.props.contacts !== prevProps.contacts) {
-//     localStorage.setItem("contacts", JSON.stringify(this.props.contacts));
-//   }
-//   console.log(prevProps);
-// }
 
 export default function ContactForm() {
   const dispatch = useDispatch();
@@ -43,12 +18,6 @@ export default function ContactForm() {
   const addNumber = (event) => {
     setNumber(event.target.value);
   };
-
-  // handleChange = (event) => {
-  //   const { name, value } = event.currentTarget;
-  //   this.setState({ [name]: value });
-
-  // };
 
   const handleSubmit = (event) => {
     event.preventDefault();

@@ -19,8 +19,3 @@ const PublicRoute = ({ component: Component, redirectTo, ...routeProps }) => {
 };
 
 export default PublicRoute;
-// const mapStateToProps = (state) => ({
-//   isAuth: isAuth(state),
-// });
-
-// export default connect(mapStateToProps)(PublicRoute);
