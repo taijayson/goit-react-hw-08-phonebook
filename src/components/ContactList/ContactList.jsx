@@ -16,9 +16,7 @@ export default function ContactList() {
     dispatch(contactOperations.deleteContact(id));
   };
   useEffect(() => {
-    if (!contacts.length) {
-      dispatch(contactOperations.uploadContacts());
-    }
+    dispatch(contactOperations.uploadContacts());
   }, [dispatch, contacts.length]);
   return (
     <>
