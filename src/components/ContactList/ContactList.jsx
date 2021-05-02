@@ -17,7 +17,7 @@ export default function ContactList() {
   };
   useEffect(() => {
     dispatch(contactOperations.uploadContacts());
-  }, [dispatch, contacts.length]);
+  }, [dispatch]);
   return (
     <>
       {loading && <h1>...</h1>}

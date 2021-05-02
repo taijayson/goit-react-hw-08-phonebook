@@ -51,7 +51,6 @@ const logIn = (data) => async (dispatch) => {
 
 const logOut = () => async (dispatch) => {
   dispatch(logoutRequest());
-  console.log(dispatch);
   try {
     await axios.post("/users/logout");
     token.unset();
