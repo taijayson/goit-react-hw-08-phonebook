@@ -14,7 +14,9 @@ import {
   getCurrentUserError,
 } from "./authActions";
 
-axios.defaults.baseURL = "https://connections-api.herokuapp.com";
+const projectID = "taijayson-phonebook";
+
+axios.defaults.baseURL = `https://${projectID}.firebaseio.com`;
 
 const token = {
   set(token) {
@@ -29,7 +31,7 @@ const register = (data) => async (dispatch) => {
   dispatch(registerRequest());
 
   try {
-    const response = await axios.post("/users/signup", data);
+    const response = await axios.post("/user/auth.json", data);
     token.set(response.data.token);
     dispatch(registerSuccess(response.data));
   } catch (error) {
