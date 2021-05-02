@@ -41,6 +41,7 @@ const logIn = (data) => async (dispatch) => {
   dispatch(loginRequest());
   try {
     const response = await axios.post("/users/login", data);
+    // console.log(data);
     token.set(response.data.token);
     dispatch(loginSuccess(response.data));
   } catch (error) {
@@ -50,7 +51,7 @@ const logIn = (data) => async (dispatch) => {
 
 const logOut = () => async (dispatch) => {
   dispatch(logoutRequest());
-
+  console.log(dispatch);
   try {
     await axios.post("/users/logout");
     token.unset();

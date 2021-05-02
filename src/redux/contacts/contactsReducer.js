@@ -52,31 +52,3 @@ const contactsReducer = combineReducers({
 });
 
 export default contactsReducer;
-
-// import {
-//   addContact,
-//   deleteContact,
-//   uploadContacts,
-//   filterContact,
-// } from "./contactsActions";
-// const contacts = localStorage.getItem("contacts");
-// const contactsItem = createReducer([], {
-//   [addContact]: (state, { payload }) => {
-//     console.log(payload);
-//     return [...state, payload];
-//   },
-//   [uploadContacts]: (state, { payload }) => payload,
-//   [deleteContact]: (state, { payload }) =>
-//     state.filter((contact) => contact.id !== payload),
-// });
-
-// const contactsFilter = createReducer("", {
-//   [filterContact]: (state, { payload }) => payload,
-// });
-
-// const contactsReducer = combineReducers({
-//   contacts: contactsItem,
-//   filter: contactsFilter,
-// });
-
-// export { contactsReducer };

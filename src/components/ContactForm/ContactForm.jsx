@@ -34,18 +34,8 @@ export default function ContactForm() {
       alert(`Contact with name "${name}" already in base`);
       return;
     }
-
-    // const newContact = {
-    //   name: name,
-    //   number: number,
-    //   id: uuidv4(),
-    // };
-
-    // this.props.onSubmit({ name, number });
-    // this.setState({ name: "", number: "" });
   };
 
-  // render() {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <label className={styles.label}>Name</label>
@@ -70,11 +60,7 @@ export default function ContactForm() {
         value={number}
         onChange={addNumber}
       />
-      <button
-        className={styles.button}
-        type="submit"
-        // onSubmit={this.handleAddContact}
-      >
+      <button className={styles.button} type="submit">
         Add contact
       </button>
     </form>
@@ -84,18 +70,3 @@ export default function ContactForm() {
 ContactForm.propTypes = {
   onSubmit: PropTypes.func,
 };
-
-// const mapStateToProps = (state) => {
-//   console.log(state);
-//   return {
-//     contacts: getAllContacts(state),
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch) => ({
-//   // dbUploadContacts: (contacts) =>
-//   //   dispatch(comboDispatchFunc.uploadContacts(contacts)),
-//   onSubmit: (contact) => dispatch(contactOperations.addContact(contact)),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

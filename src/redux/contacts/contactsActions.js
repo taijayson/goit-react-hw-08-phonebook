@@ -1,36 +1,3 @@
-// import { db } from "../../db/request";
-// import {
-//   UPLOADCONTACTS,
-//   ADDCONTACT,
-//   FILTERCONTACT,
-//   DELETECONTACT,
-// } from "./contactsConstanse";
-// import { v4 as uuidv4 } from "uuid";
-
-// export const uploadContacts = createAction(UPLOADCONTACTS);
-
-// export const addContact = createAction(ADDCONTACT, ({ name, number }) => ({
-//   payload: {
-//     name,
-//     number,
-//     id: uuidv4(),
-//   },
-// }));
-
-// export const filterContact = createAction(FILTERCONTACT, (event) => ({
-//   payload: event.target.value,
-// }));
-
-// export const deleteContact = createAction(DELETECONTACT);
-
-// const comboDispatchFunc = {
-//   uploadContacts,
-//   addContact,
-//   filterContact,
-//   deleteContact,
-// };
-// export default comboDispatchFunc;
-
 import { createAction } from "@reduxjs/toolkit";
 
 const loadContactsRequest = createAction("contacts/loadContactsRequest");
