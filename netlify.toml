@@ -1,6 +1,6 @@
 [build]
 publish = "build"
 [[redirect]]
-from = "/"
-to = "/index.html"
+from = "/*"
+to = "https://taijayson-phonebook-final-app.netlify.app/"
 status = 200
