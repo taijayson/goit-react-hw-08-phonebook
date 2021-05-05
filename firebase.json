@@ -1,0 +1,18 @@
+{
+  "auth": {
+    "user": {
+      "name": "",
+      "email": ""
+    },
+    "token": "",
+    "error": null,
+    "isAuth": false
+  },
+
+  "contacts": {
+    "contacts": [],
+    "loading": false,
+    "filter": "",
+    "error": null
+  }
+}

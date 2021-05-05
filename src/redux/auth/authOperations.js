@@ -16,7 +16,7 @@ import {
 
 const projectID = "taijayson-phonebook";
 
-axios.defaults.baseURL = `https://${projectID}.firebaseio.com`;
+axios.defaults.baseURL = `https://${projectID}firebaseio.com`;
 
 const token = {
   set(token) {
@@ -31,7 +31,7 @@ const register = (data) => async (dispatch) => {
   dispatch(registerRequest());
 
   try {
-    const response = await axios.post("/user/auth.json", data);
+    const response = await axios.post("/auth/user.json", data);
     token.set(response.data.token);
     dispatch(registerSuccess(response.data));
   } catch (error) {
@@ -42,7 +42,7 @@ const register = (data) => async (dispatch) => {
 const logIn = (data) => async (dispatch) => {
   dispatch(loginRequest());
   try {
-    const response = await axios.post("/users/login", data);
+    const response = await axios.post("/auth/user.json", data);
     // console.log(data);
     token.set(response.data.token);
     dispatch(loginSuccess(response.data));
@@ -54,7 +54,7 @@ const logIn = (data) => async (dispatch) => {
 const logOut = () => async (dispatch) => {
   dispatch(logoutRequest());
   try {
-    await axios.post("/users/logout");
+    await axios.post("/auth/user.json");
     token.unset();
     dispatch(logoutSuccess());
   } catch (error) {
@@ -75,7 +75,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
   dispatch(getCurrentUserRequest());
 
   try {
-    const response = await axios.get("/users/current");
+    const response = await axios.get("/auth/user.json");
     dispatch(getCurrentUserSuccess(response.data));
   } catch (error) {
     dispatch(getCurrentUserError(error.message));

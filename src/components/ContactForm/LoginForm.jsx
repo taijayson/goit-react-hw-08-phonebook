@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/authOperations";
+import Button from "@material-ui/core/Button";
 import styles from "./ContactForm.module.css";
 
 export default function LoginForm() {
@@ -42,9 +43,9 @@ export default function LoginForm() {
             onChange={addPassword}
           />
         </label>
-        <button type="submit" className={styles.button}>
+        <Button type="submit" variant="contained" color="primary">
           Go
-        </button>
+        </Button>
       </form>
     </div>
   );
